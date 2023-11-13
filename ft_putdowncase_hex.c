@@ -6,10 +6,11 @@
 /*   By: yasser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:08:23 by yasser            #+#    #+#             */
-/*   Updated: 2023/11/10 13:38:39 by yasser           ###   ########.fr       */
+/*   Updated: 2023/11/13 15:38:42 by yasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <unistd.h>
 
 static int	digit_count(int n)
@@ -36,6 +37,8 @@ int	ft_put_downcase_hex(unsigned int num)
 	int				j;
 
 	str = (char *)malloc(digit_count(num) * sizeof(char));
+	if (str == NULL)
+		return (-1);
 	base = "0123456789abcdef";
 	number = num;
 	i = 0;
@@ -48,9 +51,7 @@ int	ft_put_downcase_hex(unsigned int num)
 	}
 	j = i;
 	while (i-- > 0)
-	{
 		write(1, &str[i], 1);
-	}
 	free(str);
 	return (j);
 }

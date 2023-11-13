@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdlib.h>
 
 static int	digit_count(int n)
 {
@@ -36,6 +37,8 @@ int	ft_put_upcase_hex(unsigned int num)
 	int				j;
 
 	str = (char *)malloc(digit_count(num) * sizeof(char));
+	if (str == NULL)
+		return (-1);
 	base = "0123456789ABCDEF";
 	number = num;
 	i = 0;
@@ -48,9 +51,7 @@ int	ft_put_upcase_hex(unsigned int num)
 	}
 	j = i;
 	while (i-- > 0)
-	{
 		write(1, &str[i], 1);
-	}
 	free(str);
 	return (j);
 }
