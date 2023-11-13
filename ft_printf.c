@@ -6,59 +6,61 @@
 /*   By: yasser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:55:15 by yasser            #+#    #+#             */
-/*   Updated: 2023/11/13 17:55:16 by yasser           ###   ########.fr       */
+/*   Updated: 2023/11/13 20:22:36 by yasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
 #include <stdarg.h>
 #include <stdlib.h>
+#include "ft_printf.h"
 
-static int conditions(char c, va_list args)
+static int	conditions(char c, va_list args)
 {
-    if (c == 'c')
-        return ft_putchar((char)va_arg(args, int));
-    if (c == 's')
-        return ft_putstr(va_arg(args, char *));
-    if (c == 'p')
-        return ft_putptr(va_arg(args, void *));
-    if (c == 'd' || c == 'i')
-        return ft_putnbr(va_arg(args, int));
-    if (c == 'u')
-        return ft_putusignedint(va_arg(args, unsigned int));
-    if (c == 'x')
-        return ft_put_downcase_hex(va_arg(args, unsigned int));
-    if (c == 'X')
-        return ft_put_upcase_hex(va_arg(args, unsigned int));
-    if (c == '%')
-        return ft_putpercentsign();
-    return (0);
+	if (c == 'c')
+		return (ft_putchar((char)va_arg(args, int)));
+	if (c == 's')
+		return (ft_putstr(va_arg(args, char *)));
+	if (c == 'p')
+		return (ft_putptr(va_arg(args, void *)));
+	if (c == 'd' || c == 'i')
+		return (ft_putnbr(va_arg(args, int)));
+	if (c == 'u')
+		return (ft_putusignedint(va_arg(args, unsigned int)));
+	if (c == 'x')
+		return (ft_put_downcase_hex(va_arg(args, unsigned int)));
+	if (c == 'X')
+		return (ft_put_upcase_hex(va_arg(args, unsigned int)));
+	if (c == '%')
+		return (ft_putpercentsign());
+	return (0);
 }
-int ft_printf(const char *str, ...)
+
+int	ft_printf(const char *str, ...)
 {
-    va_list     args;
-    const char  *string = str;
-    int         i;
-    int         counter;
-    va_start(args, str);
-    i = 0;
-    counter = 0;
-    while (string[i] != '\0')
-    {
-        if (string[i] == '%')
-        {
-            i++;
-            counter += conditions(string[i], args);
-        }
-        else
-        {
-            ft_putchar(string[i]);
-            counter++;
-        }
-        i++;
-    }
-    va_end(args);
-    return (counter);
+	va_list		args;
+	const char	*string = str;
+	int			i;
+	int			counter;
+
+	va_start(args, str);
+	i = 0;
+	counter = 0;
+	while (string[i] != '\0')
+	{
+		if (string[i] == '%')
+		{
+			i++;
+			counter += conditions(string[i], args);
+		}
+		else
+		{
+			ft_putchar(string[i]);
+			counter++;
+		}
+		i++;
+	}
+	va_end(args);
+	return (counter);
 }
 // int	ft_printf(const char *str, ...)
 // {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yasser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 17:22:43 by yasser            #+#    #+#             */
-/*   Updated: 2023/11/13 17:23:32 by yasser           ###   ########.fr       */
+/*   Created: 2023/11/13 20:38:20 by yasser            #+#    #+#             */
+/*   Updated: 2023/11/13 20:38:21 by yasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int	ft_putptr(void *ptr);
 int	ft_putstr(char *s);
 int	ft_putusignedint(unsigned int num);
 int	ft_put_upcase_hex(unsigned int num);
+// int	ft_printf(const char *str, ...);
 
 #endif

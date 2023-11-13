@@ -6,13 +6,13 @@
 /*   By: yasser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:08:23 by yasser            #+#    #+#             */
-/*   Updated: 2023/11/13 15:38:42 by yasser           ###   ########.fr       */
+/*   Updated: 2023/11/13 20:22:06 by yasser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
 
 static int	digit_count(int n)
 {
