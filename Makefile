@@ -1,70 +1,28 @@
-# Makefile for C project
+NAME = libftprintf.a
 
-# Compiler
-CC = gcc
+SRC = ft_printf.c ft_putchar.c ft_putdowncase_hex.c ft_putnbr.c ft_putpercentsign.c ft_putptr.c ft_putstr.c ft_putunsignedint.c ft_putupcase_hex.c
 
-# Compiler flags
-CFLAGS = -Wall -Wextra -g
+OBJS = $(SRC:.c=.o)
 
-# Source files
-SRCS = ft_printf.c ft_putptr.c ft_putchar.c ft_putupcase_hex.c ft_putnbr.c ft_putstr.c ft_putdowncase_hex.c ft_putunsignedint.c ft_putpercentsign.c
+CC = cc
 
-# Object files
-OBJS = $(SRCS:.c=.o)
+CFLAGS = -Wall -Wextra -Werror
 
-# Executable name
-TARGET = myproject
+RM = rm -rf
 
-# Default target
-all: build
+AR = ar crs
 
-# Build target
-build: $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+all: $(NAME)
 
-# Clean target
+$(NAME): $(OBJS)
+	$(AR) $@ $^
+
 clean:
-	rm -f $(OBJS)
+	$(RM) $(OBJS)
 
-# Full clean target
 fclean: clean
-	rm -f $(TARGET)
+	$(RM) $(NAME)
 
-# Rebuild target
 re: fclean all
 
-# Install target
-install:
-	# Add installation commands here
-
-# Run target
-run:
-	./$(TARGET)
-
-# Test target
-test:
-	# Add test commands here
-
-# Package target
-package:
-	# Add packaging commands here
-
-# Deploy target
-deploy:
-	# Add deployment commands here
-
-# Lint target
-lint:
-	# Add linting commands here
-
-# Checkstyle target
-checkstyle:
-	# Add checkstyle commands here
-
-# Backup target
-backup:
-	# Add backup commands here
-
-# Init target
-init:
-	# Add initialization commands here
+.PHONY: all clean fclean re
